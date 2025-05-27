@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengumuman Kelulusan MI Muhammadiyah Kejajar</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    const dataSiswa = [
+      { nisn: "3113667418", nama: "ACHMAD KHOIRUL AZAM", keterangan: "LULUS" },
+      { nisn: "127609696", nama: "AHMAD AHZA ARGANI", keterangan: "LULUS" },
+      { nisn: "127431050", nama: "ALTHAF WALADI AL FARUQ", keterangan: "LULUS" },
+      { nisn: "116441202", nama: "ANISA SALSA FEBRIA", keterangan: "LULUS" },
+      { nisn: "3127668799", nama: "ANITSA KHURIL AINI", keterangan: "LULUS" },
+      { nisn: "127196531", nama: "ARETHA AYUNINDYA ARGANI", keterangan: "LULUS" },
+      { nisn: "3134570019", nama: "ARYAN ANDRIATA ALFAO", keterangan: "LULUS" },
+      { nisn: "126737094", nama: "ASYRAFFAZA AHNAF MAZAYA", keterangan: "LULUS" },
+      { nisn: "125234676", nama: "ATA AMRULLAH ALGHIFARI", keterangan: "LULUS" },
+      { nisn: "125774074", nama: "AYUNDA NAURA AUNI", keterangan: "LULUS" },
+      // Tambahkan semua data lainnya sesuai daftar yang diberikan...
+    ];
+
+    function checkLogin() {
+      const nisnInput = document.getElementById("nisn").value;
+      const result = dataSiswa.find(s => s.nisn === nisnInput);
+      const output = document.getElementById("output");
+      const form = document.getElementById("form-login");
+      if (result) {
+        form.style.display = "none";
+        output.innerHTML = `
+          <div class="animate-bounce text-center mt-10">
+            <h2 class="text-2xl font-bold text-green-600">Selamat!</h2>
+            <p class="text-lg mt-4">${result.nama}</p>
+            <p class="text-xl font-semibold text-green-700">DINYATAKAN ${result.keterangan}</p>
+            <p class="mt-2 text-sm text-gray-600">Tanggal Kelulusan: 2 Juni 2025</p>
+          </div>
+        `;
+      } else {
+        alert("NISN tidak ditemukan atau belum terdaftar.");
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-green-200 min-h-screen flex flex-col justify-center items-center">
+  <header class="text-center mb-8">
+    <h1 class="text-3xl font-bold">Pengumuman Kelulusan</h1>
+    <p class="text-lg">MI Muhammadiyah Kejajar</p>
+    <p class="text-sm text-gray-600">Jl. Kauman No. 02 Kejajar - Tahun Ajaran 2024/2025</p>
+  </header>
+
+  <div id="form-login" class="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm">
+    <h2 class="text-lg font-semibold mb-4 text-center">Masukkan NISN Anda</h2>
+    <input id="nisn" type="text" placeholder="NISN" class="border rounded w-full p-2 mb-4 focus:outline-none focus:ring" />
+    <button onclick="checkLogin()" class="w-full bg-blue-500 hover:bg-blue-600 text-white p-2 rounded">Lihat Hasil</button>
+  </div>
+
+  <div id="output"></div>
+</body>
+</html> by Pak Ir-One
